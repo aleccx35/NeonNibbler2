@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Neon Nibbler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap');
+      
+      body, html {
+        background-color: #050505;
+        font-family: 'Rajdhani', sans-serif;
+        overflow: hidden; /* Prevent scrolling on mobile while playing */
+        height: 100%;
+        width: 100%;
+        touch-action: none; /* Disable browser handling of gestures */
+        overscroll-behavior: none; /* Prevent pull-to-refresh */
+      }
+      
+      .pixel-font {
+        font-family: 'Press Start 2P', cursive;
+      }
+
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #111;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      @keyframes gameOverPulse {
+        0% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(239,68,68,0.8)); opacity: 1; }
+        50% { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(239,68,68,1)); opacity: 0.9; }
+        52% { opacity: 0.4; } 
+        54% { opacity: 0.9; }
+        100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(239,68,68,0.8)); opacity: 1; }
+      }
+      
+      .animate-game-over {
+        animation: gameOverPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes scorePop {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.5); text-shadow: 0 0 20px rgba(250, 204, 21, 0.8); color: #facc15; }
+        100% { transform: scale(1); }
+      }
+
+      .animate-pop {
+        animation: scorePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
